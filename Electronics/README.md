@@ -15,20 +15,14 @@ The most recent update:
 - `alpha_power_distribution_board` is a breakout board for distributing power sources for different devices on the ALPHA. You can plug in Pololu DC/DC circuit on the board with a 90 degree angled pin headers. 
 
 The detailed hardware information is available in the following links for users.
-- [PI setup guide](https://github.com/GSO-soslab/alpha_hardware/blob/master/doc/PI_setup_guide.md): This document provide information on how to configure the chips on the sbc_hat PBC.
+- [PI setup guide](https://github.com/GSO-soslab/alpha_hardware_release/blob/main/Electronics/doc/PI_setup_guide.md): This document provide information on how to configure the chips on the sbc_hat PBC.
 
-- [`sbc_hat_rise`](https://github.com/GSO-soslab/alpha_hardware/blob/master/doc/Boards/SBC_HAT_RISE.md) (Active)
+- [`sbc_hat`](https://github.com/GSO-soslab/alpha_hardware_release/blob/main/Electronics/doc/SBC_HAT.md)
 
-- [`sbc_hat_rise_no_usb`](https://github.com/GSO-soslab/alpha_hardware/blob/master/doc/Boards/SBC_HAT_RISE_no_usb.md) (Active)
+- [`thruster_driver`](https://github.com/GSO-soslab/alpha_hardware_release/blob/main/Electronics/doc/Thruster_driver.md)
 
-- [`thruster_driver`](https://github.com/GSO-soslab/alpha_hardware/blob/master/doc/Boards/Thruster_driver.md) (Active)
+- [`alpha_power_distribution_board`](https://github.com/GSO-soslab/alpha_hardware_release/blob/main/Electronics/doc/Alpha_power_distribution.md) (Active)
 
-- [`alpha_power_distribution_board`](https://github.com/GSO-soslab/alpha_hardware/blob/master/doc/Boards/Alpha_power_distribution.md) (Active)
 
-- [`alpha_relay_management`](https://github.com/GSO-soslab/alpha_hardware/blob/master/doc/Boards/Alpha_relay_management.md) (Active)
+- [`Battery management`](https://github.com/GSO-soslab/alpha_hardware_release/blob/main/Electronics/doc/Battery_management.md)
 
-- [`RISE_battery_power_distribution`](https://github.com/GSO-soslab/alpha_hardware/blob/master/doc/Boards/RISE_battery_power_distribution.md) (Active)
-
-- [Mast_interface]() (Active)
-
-- [`sb_hat_v2`](https://github.com/GSO-soslab/alpha_hardware/blob/master/doc/Boards/SBC%20HAT%20V2.md) (Not active)
