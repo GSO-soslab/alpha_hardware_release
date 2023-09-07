@@ -1,9 +1,9 @@
 
-## **SBC HAT RISE no USB**
-  This is the same as the SBC HAT RISE. However we removed the USB hub and add 4 more UART/RS232 ports.
+## **SBC HAT**
+All the pin functinos for the connectors are indicated on the PCB.
 
   To enable all 4 I2C to UART chips, you need to edit `config.txt` file by adding the following lines.
-
+  
   ```
 #RS232 1&2 
 dtoverlay=sc16is752-i2c,int_pin=23,addr=0x48
@@ -32,4 +32,3 @@ dtoverlay=sc16is752-i2c,int_pin=22,addr=0x4D
   
   J7 = ttySC0
   
-  More information about how to iinstall the kernel drivers and test the serial ports can be found in the [SBC_HAT_RISE documentation](https://github.com/GSO-soslab/alpha_hardware/blob/master/doc/Boards/SBC_HAT_RISE.md)
