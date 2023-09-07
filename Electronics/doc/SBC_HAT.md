@@ -1,5 +1,9 @@
 
 ## **SBC HAT**
+This board was originally design to be connected to a Raspberry PI 4.
+However, it should also work with other SBCs with the same GPIO pin arrangement, e.g., Nvidia Jetson SBCs.
+
+
 All the pin functinos for the connectors are indicated on the PCB.
 
   To enable all 4 I2C to UART chips, you need to edit `config.txt` file by adding the following lines.
