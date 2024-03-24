@@ -329,6 +329,31 @@ sudo apt-get install python3-smbus
 - Download the python testing code from Blue robotics [here](https://github.com/bluerobotics/ms5837-python)
 - Install the library `pip install smbus2`
 
+## GPIO control
+On the hat we have 5 GPIOs (7,8, 9, 12, 13).
+We use the GPIO as output pins to control MOSFET and power supplies to control sensor payloads.
+GPIO9, 12, 13 can be configured as normal GPIO.
+
+- First, you need to export the GPIO
+```
+echo 9 > /sys/class/gpio/export
+
+```
+- Second, you can set the direction of the GPIO
+```
+echo out > /sys/class/gpio/direction
+```
+
+- Finally, you can set the GPIO to High[1] or Low [0]
+```
+echo 1 > /sys/class/gpio/direction
+```
+***Note***: For GPIO7 and GPIO8, they are originally used as chip select pin for SPI in the PI system. To free them to become a regular GPIO, you need to add the following line in `/boot/config.txt` and `/boot/firmware/config.txt` file after the line `dtparam=spi=off`. The added line will remapp the chip select pin to other GPIOs, i.e., 20 and 21 here.
+Then, you can reboot the PI, and `GPIO7` and `GPIO8` can be used as normal GPIOs.
+```
+dtoverlay=spi0-cs,cs0_pin=20,cs1_pin=21
+```
+
 ## Remote setup
 The ubuntu we are using is server, to change the hostname, please refere to `/etc/cloud/templates/hosts.debian.tmpl`
 
