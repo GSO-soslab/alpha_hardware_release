@@ -80,6 +80,9 @@
         sudo reboot
         ```
     - type `hostname -I` or `ip -a address`, you should see the new IP of your PI now.
+
+    - Note: if you want to use ethernet port on the PI to access internet, you need to comment out `nameservers` and `gateway4` line under `wlan1` and add proper address under `eth0` 
+
 - You can disable the auto update:
     ```
     sudo dpkg-reconfigure -plow unattended-upgrades
@@ -354,10 +357,13 @@ Then, you can reboot the PI, and `GPIO7` and `GPIO8` can be used as normal GPIOs
 dtoverlay=spi0-cs,cs0_pin=20,cs1_pin=21
 ```
 
+
 ## Remote setup
 The ubuntu we are using is server, to change the hostname, please refere to `/etc/cloud/templates/hosts.debian.tmpl`
 
-## Make new image for Pi, check [reference](https://raspberrytips.com/create-image-sd-card/)
+## Make new image for Pi:
+[reference](https://raspberrytips.com/create-image-sd-card/)
+Notes: our image is available on request: please contact mzhou@uri.edu for more information.
 - On Ubuntu:
     - check the Pi SDcard on ubuntu through the SD card reader:
     ```sh
@@ -383,4 +389,7 @@ The ubuntu we are using is server, to change the hostname, please refere to `/et
     sudo pishrink.sh your_file.img
     ```
 - On Windows: check the reference
-- Notes: our image is avaiable on request: please contact mzhou@uri.edu for more information.
+- Verify:
+    - check ADC: individually Bring up the Power Minotor in the `bringup_test.launch`
+    - check AHRS: individually Bring up Xsens AHRS in the `bringup_test.launch`
+    - check Pico: individually Bring up Pico MCU in the `bringup_test.launch`
