@@ -1,0 +1,6 @@
+(fp_lib_table
+  (lib (name "project")(type "KiCad")(uri "${KIPRJMOD}/project_footprints.pretty")(options "")(descr ""))
+  (lib (name "polulu")(type "KiCad")(uri "${KIPRJMOD}/project_footprints.pretty/polulu")(options "")(descr ""))
+  (lib (name "pico")(type "KiCad")(uri "${KIPRJMOD}/project_footprints.pretty/pico")(options "")(descr ""))
+  (lib (name "SparkFun-MicroMod.mod")(type "KiCad")(uri "${KIPRJMOD}/project_footprints.pretty/SparkFun-MicroMod.mod.pretty")(options "")(descr ""))
+)

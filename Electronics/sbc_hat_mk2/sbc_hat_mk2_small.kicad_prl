@@ -1,6 +1,6 @@
 {
   "board": {
-    "active_layer": 31,
+    "active_layer": 0,
     "active_layer_preset": "",
     "auto_track_width": true,
     "hidden_netclasses": [],
@@ -38,6 +38,7 @@
       9,
       10,
       11,
+      12,
       13,
       15,
       16,
@@ -63,7 +64,7 @@
       39,
       40
     ],
-    "visible_layers": "ffdfeff_ffffffff",
+    "visible_layers": "ffdfef7_ffffffff",
     "zone_display_mode": 0
   },
   "git": {
@@ -73,7 +74,7 @@
     "ssh_key": ""
   },
   "meta": {
-    "filename": "alpha_power_distribution_board.kicad_prl",
+    "filename": "sbc_hat_mk2_small.kicad_prl",
     "version": 3
   },
   "project": {

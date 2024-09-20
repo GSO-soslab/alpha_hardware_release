@@ -1,0 +1,6 @@
+(sym_lib_table
+  (version 7)
+  (lib (name "pico")(type "KiCad")(uri "${KIPRJMOD}/project_libraries/pico.kicad_sym")(options "")(descr ""))
+  (lib (name "project")(type "KiCad")(uri "${KIPRJMOD}/project_libraries/project.kicad_sym")(options "")(descr ""))
+  (lib (name "SparkFun-MicroMod")(type "KiCad")(uri "${KIPRJMOD}/project_libraries/SparkFun-MicroMod.kicad_sym")(options "")(descr ""))
+)
