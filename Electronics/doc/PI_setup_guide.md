@@ -393,3 +393,103 @@ Notes: our image is available on request: please contact mzhou@uri.edu for more 
     - check ADC: individually Bring up the Power Minotor in the `bringup_test.launch`
     - check AHRS: individually Bring up Xsens AHRS in the `bringup_test.launch`
     - check Pico: individually Bring up Pico MCU in the `bringup_test.launch`
+ 
+
+## Time Synchronization
+
+### Server side (Pi)
+
+#### GPSD
+gpsd is a linux software to parse the GPS NMEA strings and publish them.
+
+- install dependency: `sudo apt install gpsd gpsd-clients pps-tools`
+- copy the following to the file: `/etc/default/gpsd`
+```sh
+# Devices gpsd should collect to at boot time.
+# They need to be read/writeable, either by user gpsd or the group dialout.
+
+# Start at boot time
+START_DAEMON="true"
+
+USBAUTO="true"
+
+DEVICES="/dev/ttyUSB0"
+
+# Other options you want to pass to gpsd
+GPSD_OPTIONS="-n"
+
+BAUDRATE="9600"
+```
+- restart: `sudo systemctl restart gpsd`
+- check the installation: `cgps -s`
+
+#### Chrony
+chrony is the linux software to time sync the system using different type of time sources (e.g., Inernet, GPS, other computer...)
+
+- install dependency: `sudo apt install chrony`
+- save the default file as backup 
+- copy following to the file `/etc/chrony/chrony.conf`
+```sh
+### /etc/chrony/chrony.conf ###
+
+#### This conf used for time sync from GPS 
+
+## Internet server
+pool ntp.ubuntu.com iburst maxsources 4
+
+driftfile /var/lib/chrony/drift
+
+# make it serve time even if it is not synced (as it can't reach out)
+local stratum 10
+
+## Used for NTP time sync for other system (e.g. DVL, Topside, Pi...)
+allow 192.168.2.0/24
+local stratum 8
+
+## Used for time sync from gpsd daemon (NMEA string) 
+makestep 1.0 3
+maxupdateskew 100.0
+refclock SHM 0 poll 2 refid GPS precision 1e-1 offset 0.128 trust
+initstepslew 30
+```
+- restart: `sudo systemctl restart chrony.service`
+- check: `watch -n -0.1 chronyc sources -v`
+
+### Clinet side (Jetson)
+- install dependency: `sudo apt install chrony`
+- save the default file as backup
+- copy following to the file `/etc/chrony/chrony.conf`: it comment out the Internet time server and set Pi as time server
+```sh
+# set the servers IP here to sync to it
+## Internet server
+#pool ntp.ubuntu.com iburst maxsources 4
+
+## Set Pi as time server: could either use hostname or IP
+Server raspberrypi minpoll 0 maxpoll 3
+
+# This directive specify the location of the file containing ID/key pairs for
+# NTP authentication.
+keyfile /etc/chrony/chrony.keys
+
+# This directive specify the file into which chronyd will store the rate
+# information.
+driftfile /var/lib/chrony/chrony.drift
+
+# Uncomment the following line to turn logging on.
+#log tracking measurements statistics
+
+# Log files location.
+logdir /var/log/chrony
+
+# Stop bad estimates upsetting machine clock.
+maxupdateskew 100.0
+
+# This directive enables kernel synchronisation (every 11 minutes) of the
+# real-time clock. Note that it can’t be used along with the 'rtcfile' directive.
+rtcsync
+
+# Step the system clock instead of slewing it if the adjustment is larger than
+# one second, but only in the first three clock updates.
+makestep 1 3
+
+```
